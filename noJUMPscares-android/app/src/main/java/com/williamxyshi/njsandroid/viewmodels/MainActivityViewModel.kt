@@ -12,7 +12,6 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
 
 
 
-
     companion object {
         const val TAG = "MainActivityViewModel"
 
