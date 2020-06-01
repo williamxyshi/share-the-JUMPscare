@@ -21,10 +21,7 @@ router.post(
         check("username", "Please Enter a Valid Username")
         .not()
         .isEmpty(),
-        check("email", "Please enter a valid email").isEmail(),
-        check("password", "Please enter a valid password").isLength({
-            min: 6
-        })
+        check("email", "Please enter a valid email").isEmail()
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -55,8 +52,10 @@ router.post(
                 password
             });
 
-            const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(password, salt);
+            // const salt = await bcrypt.genSalt(10);
+            // user.password = await bcrypt.hash(password, salt);
+
+            user.password = password;
 
             await user.save();
 
