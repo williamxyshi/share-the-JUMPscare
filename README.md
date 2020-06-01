@@ -1,2 +1,2 @@
 # noJUMPscares
-hate jumpscares? me too. never be jumped again with noJUMPscares
+hate jumpscares? me too. never be jump scared again with noJUMPscares
