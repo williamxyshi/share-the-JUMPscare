@@ -5,9 +5,17 @@ const bodyParser = require("body-parser");
 
 const user = require("./routes/user");
 
+var fs = require('fs')
+var https = require('https')
+
 const app = express();
 
+var privateKey  = fs.readFileSync('server.key', 'utf8');
+var certificate = fs.readFileSync('server.cert', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
 const db = require("./models");
+
 
 db.mongoose
   .connect(`mongodb://localhost:27017/nojumpscaresdb`, {
@@ -34,7 +42,11 @@ app.get("/", (req, res) => {
 
 app.use("/user", user);
 
-app.listen(PORT, (req, res) => {
-  console.log(`Server Started at http://localhost:${PORT}`);
+https.createServer(
+ credentials, app).listen(PORT, (req, res) => {
+  console.log(`Server Started at https://localhost:${PORT}`);
 });
 
+app.listen(4000, (req, res) => {
+  console.log(`Server Started at http://localhost:4000`);
+});

@@ -27,7 +27,7 @@ interface NJSApiService {
 
         //api endpoint URL -> change to AWS endpoint when server is turned on
         private const val awsURL = "http:/flask-env.jjxav9tgia.us-east-2.elasticbeanstalk.com/"
-        private const val localURL = "http:/192.168.0.27:3000/"
+        private const val localURL = "http:/192.168.1.12:4000/"
 
 
         fun create(): NJSApiService {
@@ -42,4 +42,6 @@ interface NJSApiService {
             return retrofit.create(NJSApiService::class.java)
         }
     }
+
+
 }

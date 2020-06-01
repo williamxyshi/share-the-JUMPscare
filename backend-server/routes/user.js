@@ -90,6 +90,9 @@ router.post(
       check("email", "Please enter a valid email").isEmail()
     ],
     async (req, res) => {
+
+      console.log("reached here")
+
       const errors = validationResult(req);
   
       if (!errors.isEmpty()) {

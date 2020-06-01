@@ -21,7 +21,7 @@ object WebServerAccessObject {
             )
     }
 
-    fun showResult(string: String){
+    private fun showResult(string: String){
         Log.d(TAG, "result from server: ${string} ")
 
     }
