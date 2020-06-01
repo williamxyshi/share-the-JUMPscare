@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.williamxyshi.njsandroid.R
+import com.williamxyshi.njsandroid.utils.WebServerAccessObject
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.w3c.dom.Text
@@ -18,11 +19,11 @@ class LoginFragment : Fragment() {
 
     private lateinit var vm: MainActivityViewModel
 
-    var username = ""
+    var email = ""
     var password = ""
 
     private lateinit var loginButton: Button
-    private lateinit var usernameText: TextView
+    private lateinit var emailText: TextView
     private lateinit var passwordText: TextView
 
 
@@ -34,7 +35,7 @@ class LoginFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_login, container, false) as ViewGroup
 
         loginButton = rootView.findViewById(R.id.loginButton)
-        usernameText = rootView.findViewById(R.id.usernameField)
+        emailText = rootView.findViewById(R.id.emailField)
         passwordText = rootView.findViewById(R.id.passwordField)
 
         initialize()
@@ -53,10 +54,14 @@ class LoginFragment : Fragment() {
     private fun setUpListeners() {
 
         loginButton.setOnClickListener{
-            username = usernameText.text.toString()
+            email = emailText.text.toString()
             password = passwordText.text.toString()
+            Log.d(TAG, "email: ${email}, password: ${password}")
 
-            Log.d(TAG, "username: ${username}, password: ${password}")
+
+            vm.setEmailPassword(email, password)
+
+            WebServerAccessObject.loginCall(vm)
 
 
         }
@@ -68,6 +73,6 @@ class LoginFragment : Fragment() {
     }
 
     companion object{
-        const val TAG = "DashboardFragment"
+        const val TAG = "LoginFragment"
     }
 }

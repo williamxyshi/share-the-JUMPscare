@@ -87,10 +87,7 @@ router.post(
 router.post(
     "/login",
     [
-      check("email", "Please enter a valid email").isEmail(),
-      check("password", "Please enter a valid password").isLength({
-        min: 6
-      })
+      check("email", "Please enter a valid email").isEmail()
     ],
     async (req, res) => {
       const errors = validationResult(req);
@@ -111,12 +108,18 @@ router.post(
             message: "User Not Exist"
           });
   
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch)
+        // const isMatch = await bcrypt.compare(password, user.password);
+
+        /**
+         * I'm suspicious on this localecompare function, keep
+         * a close eye on it
+         */
+        const isMatch = password.localeCompare(user.password)
+        if (isMatch)
           return res.status(400).json({
             message: "Incorrect Password !"
           });
-  
+
         const payload = {
           user: {
             id: user.id

@@ -11,6 +11,18 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
     var currentActionPage: MutableLiveData<Int> = MutableLiveData()
 
 
+    var userToken: MutableLiveData<String> = MutableLiveData()
+
+
+    var userPassword:String = ""
+    var userEmail:String  = ""
+
+    fun setEmailPassword(email: String, password: String){
+        userEmail = email
+        userPassword = password
+    }
+
+
 
     companion object {
         const val TAG = "MainActivityViewModel"

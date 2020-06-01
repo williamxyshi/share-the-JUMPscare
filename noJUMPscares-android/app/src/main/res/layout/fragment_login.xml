@@ -16,10 +16,10 @@
         <TextView
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/usernameField"
-            android:id="@+id/usernameText"
+            app:layout_constraintRight_toLeftOf="@id/emailField"
+            android:id="@+id/emailText"
             android:textSize="22sp"
-            android:text="username:"
+            android:text="email:"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -27,9 +27,9 @@
         <EditText
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/usernameField"
-            android:hint="enter your username"
-            app:layout_constraintRight_toLeftOf="@id/usernameText"
+            android:id="@+id/emailField"
+            android:hint="enter your email"
+            app:layout_constraintRight_toLeftOf="@id/emailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
