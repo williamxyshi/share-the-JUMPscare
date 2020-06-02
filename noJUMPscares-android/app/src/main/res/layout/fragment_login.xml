@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+            android:inputType="textEmailAddress"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/emailField"
@@ -59,6 +60,8 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+            android:inputType="textPassword"
+
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/passwordField"

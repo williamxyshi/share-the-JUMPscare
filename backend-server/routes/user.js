@@ -91,7 +91,8 @@ router.post(
     ],
     async (req, res) => {
 
-      console.log("reached here")
+
+      console.log("reached here 1" + req)
 
       const errors = validationResult(req);
   
@@ -100,6 +101,8 @@ router.post(
           errors: errors.array()
         });
       }
+
+      console.log("reached here 2")
   
       const { email, password } = req.body;
       try {
@@ -108,7 +111,7 @@ router.post(
         });
         if (!user)
           return res.status(400).json({
-            message: "User Not Exist"
+            message: "User Does Not Exist"
           });
   
         // const isMatch = await bcrypt.compare(password, user.password);
