@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const user = require("./routes/user");
+const movie = require("./routes/movie")
 
 var fs = require('fs')
 var https = require('https')
@@ -41,6 +42,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", user);
+app.use("/movie", movie)
 
 https.createServer(
  credentials, app).listen(PORT, (req, res) => {
