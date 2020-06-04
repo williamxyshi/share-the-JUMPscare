@@ -1,4 +1,4 @@
-package com.williamxyshi.njsandroid.models
+package com.williamxyshi.njsandroid.models.retrofitmodels
 
 import com.google.gson.annotations.SerializedName
 

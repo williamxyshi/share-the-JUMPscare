@@ -3,6 +3,7 @@ package com.williamxyshi.njsandroid.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.williamxyshi.njsandroid.models.User
 
 
 class MainActivityViewModel(application: Application): AndroidViewModel(application) {
@@ -12,6 +13,10 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
 
 
     var userToken: MutableLiveData<String> = MutableLiveData()
+
+    var failedToLogIn: MutableLiveData<String> = MutableLiveData()
+
+    var user: MutableLiveData<User> = MutableLiveData()
 
 
     var userPassword:String = ""

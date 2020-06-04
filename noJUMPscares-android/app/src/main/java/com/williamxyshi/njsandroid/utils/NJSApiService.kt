@@ -1,7 +1,8 @@
 package com.williamxyshi.njsandroid.utils
 
-import com.williamxyshi.njsandroid.models.LoginInfo
-import com.williamxyshi.njsandroid.models.TokenModel
+import com.williamxyshi.njsandroid.models.retrofitmodels.LoginInfo
+import com.williamxyshi.njsandroid.models.retrofitmodels.TokenModel
+import com.williamxyshi.njsandroid.models.retrofitmodels.UserModel
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,6 +24,9 @@ interface NJSApiService {
     fun login(@Body loginInfo: LoginInfo):
             Observable<TokenModel.Result>
 
+    @GET("/user/me")
+    fun getUser(@Header("token") token: String):
+            Observable<UserModel.Result>
 
 
 
