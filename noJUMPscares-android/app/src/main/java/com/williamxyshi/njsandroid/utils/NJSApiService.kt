@@ -1,5 +1,6 @@
 package com.williamxyshi.njsandroid.utils
 
+import com.williamxyshi.njsandroid.models.LoginInfo
 import com.williamxyshi.njsandroid.models.TokenModel
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
@@ -18,10 +19,8 @@ interface NJSApiService {
      *
      */
 
-
-    @FormUrlEncoded
     @POST("/user/login")
-    fun login(@Field( value = "email", encoded = true) email: String, @Field("password") password: String ):
+    fun login(@Body loginInfo: LoginInfo):
             Observable<TokenModel.Result>
 
 

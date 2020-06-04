@@ -1,6 +1,7 @@
 package com.williamxyshi.njsandroid.utils
 
 import android.util.Log
+import com.williamxyshi.njsandroid.models.LoginInfo
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -12,7 +13,9 @@ object WebServerAccessObject {
     }
 
     fun loginCall(vm: MainActivityViewModel){
-        njsApiService.login(vm.userEmail, vm.userPassword).subscribeOn(Schedulers.io())
+        val info = LoginInfo(vm.userEmail, vm.userPassword)
+
+        njsApiService.login( info ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result -> showResult(result.token)
