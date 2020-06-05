@@ -9,7 +9,7 @@ import com.williamxyshi.njsandroid.models.User
 class MainActivityViewModel(application: Application): AndroidViewModel(application) {
 
     //current fragment the activity is on
-    var currentActionPage: MutableLiveData<Int> = MutableLiveData()
+    var currentPage: MutableLiveData<Int> = MutableLiveData()
 
 
     var userToken: MutableLiveData<String> = MutableLiveData()
@@ -31,6 +31,16 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
 
     companion object {
         const val TAG = "MainActivityViewModel"
+
+        const val HOME_PAGE = 0
+        const val SEARCH_PAGE = 1
+
+        /**
+         * user page includes loginfragment and loggedin fragment
+         */
+        const val USER_PAGE = 2
+
+        const val DETAILS_PAGE = 3
 
     }
 
