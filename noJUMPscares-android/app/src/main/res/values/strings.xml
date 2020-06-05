@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">nJsAndroid</string>
+    <string name="omdb_api_key">3decae4a</string>
+
 </resources>

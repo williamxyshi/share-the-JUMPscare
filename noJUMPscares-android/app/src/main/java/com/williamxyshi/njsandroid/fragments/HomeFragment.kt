@@ -13,7 +13,7 @@ class HomeFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_login, container, false) as ViewGroup
+        val rootView = inflater.inflate(R.layout.fragment_home, container, false) as ViewGroup
 
 
         return rootView

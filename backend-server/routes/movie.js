@@ -9,18 +9,38 @@ const auth = require("./../middleware/auth");
 const Movie = require("../models/movie_model");
 
 
-router.get("/getmovie", async (req, res) => {
+router.post("/getmovie", async (req, res) => {
   try {
 
-    const { movie_name, length } = req.body;
+    console.log("reached movie" + req);
+    const { name, length } = req.body;
+    console.log("reached movie" + name + length);
 
-    let movie = await User.findOne({
-      movie_name
+    let movie = await Movie.findOne({
+      name
     });
+    console.log("reached movie" + movie);
+
     if(movie != null){
 
+      res.json(movie);
+
     } else {
-      
+      console.log("movie not found");
+
+      movie = new Movie({
+
+       name,
+       length
+
+      });
+
+      movie.save()
+
+      console.log("movie saved" + movie.name + movie.length)
+
+      res.json(movie);
+
     }
 
 
@@ -28,7 +48,7 @@ router.get("/getmovie", async (req, res) => {
 
 
   } catch (e) {
-    res.send({ message: "Error in Fetching user" });
+    res.send({ message: "error in fetching movie" });
   }
 });
 

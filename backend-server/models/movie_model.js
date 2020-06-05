@@ -1,18 +1,11 @@
 const mongoose = require("mongoose");
 
 const Movie = mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  length: {
-    type: Number,
-    required: true
-  },
-  posts: {
-    type: Array,
-    default: Date.now()
-  }
+
+  name: String,
+  length: Number,
+  posts: Array
+   
 });
 
 // export model user with UserSchema

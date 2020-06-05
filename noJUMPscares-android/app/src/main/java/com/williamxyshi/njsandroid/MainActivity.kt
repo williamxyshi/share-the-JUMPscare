@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.williamxyshi.njsandroid.fragments.HomeFragment
 import com.williamxyshi.njsandroid.fragments.LoggedInFragment
 import com.williamxyshi.njsandroid.fragments.LoginFragment
+import com.williamxyshi.njsandroid.fragments.SearchFragment
 import com.williamxyshi.njsandroid.utils.WebServerAccessObject
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,6 +19,9 @@ class MainActivity : AppCompatActivity() {
     private val loggedinFragment: LoggedInFragment = LoggedInFragment()
 
     private val homeFragment: HomeFragment = HomeFragment()
+
+    private val searchFragment: SearchFragment = SearchFragment()
+
 
     private lateinit var vm: MainActivityViewModel
 
@@ -51,12 +55,25 @@ class MainActivity : AppCompatActivity() {
         })
 
         vm.user.observe(this, Observer {
+
             if(it != null){
+                /**
+                 * user logged in
+                 */
                 supportFragmentManager.beginTransaction().apply {
                     replace(R.id.fragmentView, loggedinFragment).commit()
                     addToBackStack(null)
                 }
+            } else {
+                /**
+                 *  user logged out
+                 */
+                supportFragmentManager.beginTransaction().apply {
+                    replace(R.id.fragmentView, loginFragment).commit()
+                    addToBackStack(null)
+                }
             }
+
 
         })
     }
@@ -87,6 +104,19 @@ class MainActivity : AppCompatActivity() {
                             addToBackStack(null)
                         }
                     }
+                    true
+                }
+
+                R.id.bottom_navigation_search -> {
+                    vm.currentPage.value = MainActivityViewModel.SEARCH_PAGE
+
+                    supportFragmentManager.beginTransaction().apply {
+                        replace(R.id.fragmentView, searchFragment).commit()
+                        addToBackStack(null)
+                    }
+
+
+
                     true
                 }
 
