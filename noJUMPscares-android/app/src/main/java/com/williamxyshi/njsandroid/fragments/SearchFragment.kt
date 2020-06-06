@@ -9,8 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.williamxyshi.njsandroid.R
+import com.williamxyshi.njsandroid.adapters.SearchResultsAdapter
 import com.williamxyshi.njsandroid.utils.MovieServerAccessObject
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 
@@ -21,6 +25,9 @@ class SearchFragment: Fragment() {
     private lateinit var searchButton: Button
     private lateinit var searchText: EditText
 
+    private lateinit var recyclerView: RecyclerView
+
+    private lateinit var adapter: SearchResultsAdapter
 
 
 
@@ -36,13 +43,28 @@ class SearchFragment: Fragment() {
 
         searchText = rootView.findViewById(R.id.movieSearchName)
 
+
         initialize()
+
+        recyclerView = rootView.findViewById(R.id.searchResultRecyclerView)
+        adapter = SearchResultsAdapter(vm, context?:return null)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = adapter
+
+
 
         return rootView
     }
 
     private fun setUpVM(){
         vm = ViewModelProviders.of(activity?:return).get(MainActivityViewModel::class.java)
+
+
+        vm.searchPageResults.observe(this, Observer{
+
+            recyclerView.adapter?.notifyDataSetChanged()
+
+        })
     }
 
     private fun initialize(){
@@ -61,9 +83,10 @@ class SearchFragment: Fragment() {
     }
 
 
-
-
-
+    override fun onResume() {
+        super.onResume()
+        recyclerView.adapter?.notifyDataSetChanged()
+    }
 
     companion object{
         const val TAG = "SearchFragment"

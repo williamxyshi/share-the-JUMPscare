@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.williamxyshi.njsandroid.models.User
+import com.williamxyshi.njsandroid.models.retrofitmodels.MovieModel
 
 
 class MainActivityViewModel(application: Application): AndroidViewModel(application) {
@@ -11,12 +12,22 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
     //current fragment the activity is on
     var currentPage: MutableLiveData<Int> = MutableLiveData()
 
-
+    /**
+     * internal user auth token  server sends us to get user profile
+     */
     var userToken: MutableLiveData<String> = MutableLiveData()
 
+    /**
+     * the user profile
+     */
+    var user: MutableLiveData<User> = MutableLiveData()
+
+    /**
+     * error message, if an error message gets set here, we display a toast
+     */
     var failedToLogIn: MutableLiveData<String> = MutableLiveData()
 
-    var user: MutableLiveData<User> = MutableLiveData()
+    var searchPageResults: MutableLiveData<MovieModel.SearchArrayResult> = MutableLiveData()
 
 
     var userPassword:String = ""

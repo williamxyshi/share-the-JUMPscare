@@ -23,6 +23,9 @@ object MovieServerAccessObject {
             .subscribe(
                 { result ->
                         Log.d(TAG, "result for server: ${result}" )
+
+                        vm.searchPageResults.value = result
+
                 },
                 { error ->
                     showResult(error.message ?: "ERROR")

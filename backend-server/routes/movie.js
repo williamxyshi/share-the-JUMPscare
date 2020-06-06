@@ -8,6 +8,20 @@ const auth = require("./../middleware/auth");
 
 const Movie = require("../models/movie_model");
 
+router.get("/frontpage", async (req, res) => {
+  try {
+
+    A = ["get out", "silent hill", "shining", "paranormal activity" ]
+
+
+
+    res.json(A)
+
+  } catch (e) {
+    res.send({ message: "error in fetching frontpage" });
+  }
+});
+
 
 router.post("/getmovie", async (req, res) => {
   try {
