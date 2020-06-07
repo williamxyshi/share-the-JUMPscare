@@ -4,10 +4,10 @@ const Movie = mongoose.Schema({
 
   name: String,
   length: Number,
-  posts: Array
+  posts : { type : Array , "default" : [] }
    
 });
 
-// export model user with UserSchema
+// export movie user
 module.exports = mongoose.model("movie", Movie);
  
