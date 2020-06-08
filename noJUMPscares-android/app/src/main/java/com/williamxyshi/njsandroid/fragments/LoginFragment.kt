@@ -49,10 +49,6 @@ class LoginFragment : Fragment() {
     private fun initialize(){
         vm = ViewModelProviders.of(activity?:return).get(MainActivityViewModel::class.java)
 
-        vm.failedToLogIn.observe(this, Observer {
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-
-        })
 
     }
 

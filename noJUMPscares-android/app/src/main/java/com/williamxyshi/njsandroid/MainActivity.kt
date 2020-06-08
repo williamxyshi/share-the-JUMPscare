@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         initialize()
         setUpNavigationBar()
 
+        supportActionBar?.title = "bruh"
+
         supportFragmentManager.beginTransaction().add(R.id.fragmentView, homeFragment).commit()
     }
 

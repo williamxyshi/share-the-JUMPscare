@@ -4,7 +4,7 @@ const Movie = mongoose.Schema({
 
   name: String,
   length: Number,
-  posts : { type : Array , "default" : [] }
+  posts : [{time: String, majorscare: String, description: String}]
    
 });
 
