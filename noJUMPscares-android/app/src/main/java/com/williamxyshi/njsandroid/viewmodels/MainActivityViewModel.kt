@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.williamxyshi.njsandroid.models.User
+import com.williamxyshi.njsandroid.models.retrofitmodels.MovieDataClasses
 import com.williamxyshi.njsandroid.models.retrofitmodels.MovieModel
 
 
@@ -28,6 +29,17 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
     var failedToLogIn: MutableLiveData<String> = MutableLiveData()
 
     var searchPageResults: MutableLiveData<MovieModel.SearchArrayResult> = MutableLiveData()
+
+
+    /**
+     * current movie to display for detail fragment from omdb api
+     */
+    var currentMovieDetail: MutableLiveData<MovieModel.MovieResult> = MutableLiveData()
+
+    /**
+     * current movie to display from node server (post data etc)
+     */
+    var currentMovieDetailWebServer: MutableLiveData<MovieDataClasses.ServerMovieResult> = MutableLiveData()
 
 
     var userPassword:String = ""

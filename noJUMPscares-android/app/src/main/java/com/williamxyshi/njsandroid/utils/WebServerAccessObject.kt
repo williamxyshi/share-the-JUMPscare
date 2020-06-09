@@ -3,6 +3,7 @@ package com.williamxyshi.njsandroid.utils
 import android.util.Log
 import com.williamxyshi.njsandroid.models.User
 import com.williamxyshi.njsandroid.models.retrofitmodels.LoginInfo
+import com.williamxyshi.njsandroid.models.retrofitmodels.MovieDataClasses
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -45,7 +46,24 @@ object WebServerAccessObject {
             }
 
             )
+    }
 
+    fun getMovie(name: String, length: String, vm: MainActivityViewModel){
+
+        njsApiService.getMovie(MovieDataClasses.MovieInfo(name, length)).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+                Log.d(TAG, "result from node server: ${it}")
+
+                vm.currentMovieDetailWebServer.value = it
+            },
+                {error ->
+                    showResult(error.message?:"ERROR")
+
+                }
+
+            )
     }
 
     private fun showResult(string: String){

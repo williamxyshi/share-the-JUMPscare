@@ -16,9 +16,12 @@ interface OMDbApiService {
 
 
     @GET("/")
-    fun searchMovie(@Query("apikey") apikey: String, @Query("s") s: String):
+    fun searchMovies(@Query("apikey") apikey: String, @Query("s") s: String):
             Observable<MovieModel.SearchArrayResult>
 
+    @GET("/")
+    fun searchSpecificMovie(@Query("apikey") apikey: String, @Query("t") t: String):
+            Observable<MovieModel.MovieResult>
 
 
 

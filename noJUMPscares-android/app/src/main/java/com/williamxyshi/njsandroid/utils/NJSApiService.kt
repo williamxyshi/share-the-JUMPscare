@@ -1,6 +1,7 @@
 package com.williamxyshi.njsandroid.utils
 
 import com.williamxyshi.njsandroid.models.retrofitmodels.LoginInfo
+import com.williamxyshi.njsandroid.models.retrofitmodels.MovieDataClasses
 import com.williamxyshi.njsandroid.models.retrofitmodels.TokenModel
 import com.williamxyshi.njsandroid.models.retrofitmodels.UserModel
 import io.reactivex.Observable
@@ -28,7 +29,9 @@ interface NJSApiService {
     fun getUser(@Header("token") token: String):
             Observable<UserModel.Result>
 
-
+    @POST("/movie/getmovie")
+    fun getMovie(@Body movieinfo: MovieDataClasses.MovieInfo) :
+            Observable<MovieDataClasses.ServerMovieResult>
 
 
 

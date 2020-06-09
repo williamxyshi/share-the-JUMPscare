@@ -45,9 +45,9 @@ router.post("/getmovie", async (req, res) => {
     let movie = await Movie.findOne({
       name
     });
-    console.log("reached movie" + movie);
+    console.log("reached db movie" + movie);
 
-    if(movie != null){
+    if(movie != null && length != null && name != null){
 
       res.json(movie);
 

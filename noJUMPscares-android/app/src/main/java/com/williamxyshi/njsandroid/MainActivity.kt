@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.williamxyshi.njsandroid.fragments.HomeFragment
-import com.williamxyshi.njsandroid.fragments.LoggedInFragment
-import com.williamxyshi.njsandroid.fragments.LoginFragment
-import com.williamxyshi.njsandroid.fragments.SearchFragment
+import com.williamxyshi.njsandroid.fragments.*
 import com.williamxyshi.njsandroid.utils.WebServerAccessObject
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private val homeFragment: HomeFragment = HomeFragment()
 
     private val searchFragment: SearchFragment = SearchFragment()
+    private val detailFragment: DetailFragment = DetailFragment()
 
 
     private lateinit var vm: MainActivityViewModel
@@ -74,6 +72,32 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+
+        })
+
+        vm.currentPage.observe(this, Observer {
+            if(it == MainActivityViewModel.DETAILS_PAGE){
+//                supportFragmentManager.beginTransaction().apply {
+//                    replace(R.id.fragmentView, detailFragment).commit()
+//                    addToBackStack(null)
+//                }
+            }
+        })
+
+
+        vm.currentMovieDetail.observe(this, Observer {
+
+            /**
+             * get the post data from node server
+             */
+            WebServerAccessObject.getMovie(it.Title, it.Runtime, vm)
+
+
+            vm.currentPage.value = MainActivityViewModel.DETAILS_PAGE
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentView, detailFragment).commit()
+                addToBackStack(null)
+            }
 
         })
     }

@@ -1,7 +1,5 @@
 package com.williamxyshi.njsandroid.utils
 
-import android.app.Application
-import android.content.Context
 import android.util.Log
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,13 +16,31 @@ object MovieServerAccessObject {
 
     fun searchMovie(movieName: String, vm: MainActivityViewModel){
 
-        ombdbApiService.searchMovie( apiKey, movieName ).subscribeOn(Schedulers.io())
+        ombdbApiService.searchMovies( apiKey, movieName ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result ->
                         Log.d(TAG, "result for server: ${result}" )
 
                         vm.searchPageResults.value = result
+
+                },
+                { error ->
+                    showResult(error.message ?: "ERROR")
+                }
+            )
+
+    }
+
+    fun searchSpecificMovie(movieName: String, vm: MainActivityViewModel){
+
+        ombdbApiService.searchSpecificMovie( apiKey, movieName ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { result ->
+                    Log.d(TAG, "result for server: ${result}" )
+
+                    vm.currentMovieDetail.value = result
 
                 },
                 { error ->

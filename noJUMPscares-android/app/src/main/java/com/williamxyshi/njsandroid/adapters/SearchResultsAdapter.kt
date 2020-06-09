@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 import com.williamxyshi.njsandroid.R
 import com.williamxyshi.njsandroid.models.retrofitmodels.MovieModel
+import com.williamxyshi.njsandroid.utils.MovieServerAccessObject
+import com.williamxyshi.njsandroid.utils.WebServerAccessObject
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 
 class SearchResultsAdapter(private val vm: MainActivityViewModel, private val context: Context): RecyclerView.Adapter<SearchResultsAdapter.SearchResultViewHolder>() {
@@ -23,6 +26,8 @@ class SearchResultsAdapter(private val vm: MainActivityViewModel, private val co
             movieYear = itemView.findViewById(R.id.movieYear)
             moviePoster = itemView.findViewById(R.id.moviePoster)
             movieType = itemView.findViewById(R.id.movieType)
+
+            searchResultContainer = itemView.findViewById(R.id.searchResultContainer)
         }
     }
 
@@ -40,7 +45,10 @@ class SearchResultsAdapter(private val vm: MainActivityViewModel, private val co
 
 
 
+        holder.searchResultContainer.setOnClickListener{
+            MovieServerAccessObject.searchSpecificMovie(movieModel.Title, vm)
 
+        }
 
 
 
@@ -58,6 +66,8 @@ class SearchResultsAdapter(private val vm: MainActivityViewModel, private val co
         lateinit var movieYear: TextView
         lateinit var moviePoster: ImageView
         lateinit var movieType: TextView
+
+        lateinit var searchResultContainer: ConstraintLayout
 
 
     }

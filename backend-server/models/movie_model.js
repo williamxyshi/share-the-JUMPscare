@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Movie = mongoose.Schema({
 
   name: String,
-  length: Number,
+  length: String,
   posts : [{time: String, majorscare: String, description: String}]
    
 });
