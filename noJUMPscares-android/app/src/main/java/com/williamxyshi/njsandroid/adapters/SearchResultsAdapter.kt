@@ -46,6 +46,7 @@ class SearchResultsAdapter(private val vm: MainActivityViewModel, private val co
 
 
         holder.searchResultContainer.setOnClickListener{
+
             MovieServerAccessObject.searchSpecificMovie(movieModel.Title, vm)
 
         }
