@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         setUpNavigationBar()
 
         supportFragmentManager.beginTransaction().add(R.id.fragmentView, homeFragment).commit()
+        vm.currentPage.value = MainActivityViewModel.HOME_PAGE
     }
 
 
@@ -76,11 +77,25 @@ class MainActivity : AppCompatActivity() {
         })
 
         vm.currentPage.observe(this, Observer {
-            if(it == MainActivityViewModel.DETAILS_PAGE){
-//                supportFragmentManager.beginTransaction().apply {
-//                    replace(R.id.fragmentView, detailFragment).commit()
-//                    addToBackStack(null)
-//                }
+            when(it){
+                MainActivityViewModel.DETAILS_PAGE -> {
+                    supportActionBar?.title = vm.currentMovieDetail.value?.Title
+                }
+                MainActivityViewModel.SEARCH_PAGE->{
+                    supportActionBar?.title = "Search Movies"
+
+                }
+                MainActivityViewModel.USER_PAGE -> {
+                    supportActionBar?.title = "User Profile"
+
+                }
+                MainActivityViewModel.HOME_PAGE -> {
+                    supportActionBar?.title = "Front Page"
+                }
+
+
+
+
             }
         })
 

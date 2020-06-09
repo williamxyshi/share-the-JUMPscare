@@ -1,6 +1,8 @@
 package com.williamxyshi.njsandroid.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -68,6 +70,19 @@ class SearchFragment: Fragment() {
     }
 
     private fun initialize(){
+        searchText.addTextChangedListener(  object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {}
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                MovieServerAccessObject.searchMovie(p0.toString(), vm)
+            }
+        }
+
+
+        )
 
         searchButton.setOnClickListener {
             val text: String = searchText.text.toString()
