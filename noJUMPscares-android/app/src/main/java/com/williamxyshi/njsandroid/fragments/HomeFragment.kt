@@ -18,8 +18,8 @@ import android.R as androidR
 import android.util.DisplayMetrics
 import android.R.string.no
 import android.R.attr.name
-
-
+import android.util.Log
+import com.williamxyshi.njsandroid.adapters.HomePageMovieAdapter
 
 
 class HomeFragment: Fragment() {
@@ -28,8 +28,15 @@ class HomeFragment: Fragment() {
 
 
     private lateinit var  featuredMoviesRecyclerView: RecyclerView
-
     private lateinit var featuredMoviesAdapter: FeaturedMoviesAdapter
+
+    private lateinit var mostScaredRecyclerView: RecyclerView
+    private lateinit var mostScaredAdapter: HomePageMovieAdapter
+
+    private lateinit var mostLikedRecyclerView: RecyclerView
+    private lateinit var mostLikedAdapter: HomePageMovieAdapter
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,13 +86,22 @@ class HomeFragment: Fragment() {
         snapHelper.attachToRecyclerView(featuredMoviesRecyclerView)
 
         val displayMetrics = this.getResources().displayMetrics
-        val dpHeight = displayMetrics.heightPixels / displayMetrics.density
         val dpWidth = displayMetrics.widthPixels / displayMetrics.density
 
 
         featuredMoviesRecyclerView.setPadding((dpWidth/2).toInt() + 100, 0, (dpWidth/2).toInt() + 100, 0)
         featuredMoviesRecyclerView.layoutManager= LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 
+        mostScaredRecyclerView = rootView.findViewById(R.id.scariestRecyclerView)
+        mostScaredAdapter = HomePageMovieAdapter(context?:return null, vm, false)
+        mostScaredRecyclerView.layoutManager =  LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        mostScaredRecyclerView.adapter = mostScaredAdapter
+
+
+        mostLikedRecyclerView = rootView.findViewById(R.id.mostLikesRecyclerView)
+        mostLikedAdapter = HomePageMovieAdapter(context?:return null, vm, true)
+        mostLikedRecyclerView.layoutManager =  LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        mostLikedRecyclerView.adapter = mostLikedAdapter
 
 
         return rootView
@@ -95,7 +111,12 @@ class HomeFragment: Fragment() {
         vm = ViewModelProviders.of(activity?:return).get(MainActivityViewModel::class.java)
 
         vm.frontPage.observe(this, Observer {
+
+            Log.d(TAG, "sizes: ${vm.frontPage.value?.MostLiked}")
+
             featuredMoviesRecyclerView.adapter?.notifyDataSetChanged()
+            mostScaredRecyclerView.adapter?.notifyDataSetChanged()
+            mostLikedRecyclerView.adapter?.notifyDataSetChanged()
         })
 
     }
