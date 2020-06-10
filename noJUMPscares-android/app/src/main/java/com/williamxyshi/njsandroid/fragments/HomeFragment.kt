@@ -121,6 +121,11 @@ class HomeFragment: Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        vm.currentPage.value = MainActivityViewModel.HOME_PAGE
+    }
+
 
     companion object{
         private const val TAG = "HomeFragment"

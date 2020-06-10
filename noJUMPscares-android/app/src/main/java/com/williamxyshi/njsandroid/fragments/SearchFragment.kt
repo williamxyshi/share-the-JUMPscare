@@ -100,6 +100,7 @@ class SearchFragment: Fragment() {
     override fun onResume() {
         super.onResume()
         recyclerView.adapter?.notifyDataSetChanged()
+        vm.currentPage.value = MainActivityViewModel.SEARCH_PAGE
     }
 
     companion object{

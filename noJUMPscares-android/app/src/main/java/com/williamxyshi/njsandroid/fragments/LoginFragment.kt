@@ -71,6 +71,7 @@ class LoginFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        vm.currentPage.value = MainActivityViewModel.USER_PAGE
     }
 
     companion object{

@@ -61,7 +61,7 @@ router.get("/frontpage", async (req, res) => {
       MostScares.push(movie)
     }
 
-       /**
+    /**
      * find most liked movies
      * 
      * TODO: Fix this to actually most liked (most likes)
