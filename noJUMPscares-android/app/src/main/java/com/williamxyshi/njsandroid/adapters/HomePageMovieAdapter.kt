@@ -32,7 +32,7 @@ class HomePageMovieAdapter (val context: Context, val vm: MainActivityViewModel,
         }
 
         val emoji =   if(mostLiked){
-            "❤"
+            "\uD83D\uDC4D"
         } else {
             "\uD83D\uDC7B"
         }
