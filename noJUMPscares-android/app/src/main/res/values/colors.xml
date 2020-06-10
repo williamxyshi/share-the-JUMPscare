@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#403D39</color>
+    <color name="colorPrimary">#252422</color>
     <color name="colorPrimaryDark">#252422</color>
     <color name="colorAccent">#CCC5B9</color>
 
@@ -8,10 +8,13 @@
 
     <color name="eerieeblack">#252422</color>
     <color name="backgroundColorLight">#403D39</color>
-    <color name="backgroundColor">#191919</color>
+    <color name="backgroundColor">#CCC5B9</color>
     <color name="orangeAccent">#EB5E28</color>
     <color name="silverAccent">#CCC5B9</color>
     <color name="whiteAccent">#FFFCF2</color>
+
+    <color name="mainTextColor">#252422</color>
+
 
 
 

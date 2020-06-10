@@ -35,6 +35,11 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().add(R.id.fragmentView, homeFragment).commit()
         vm.currentPage.value = MainActivityViewModel.HOME_PAGE
+
+        /**
+         * get front page movies
+         */
+        WebServerAccessObject.getFrontPage(vm)
     }
 
 
@@ -90,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 MainActivityViewModel.HOME_PAGE -> {
-                    supportActionBar?.title = "Front Page"
+                    supportActionBar?.title = "Share the Jumpscares"
                 }
 
 
@@ -105,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             /**
              * get the post data from node server
              */
-            WebServerAccessObject.getMovie(it.Title, it.Runtime, vm)
+            WebServerAccessObject.getMovie(it.Title, it.Runtime, it.Poster, vm)
 
 
             vm.currentPage.value = MainActivityViewModel.DETAILS_PAGE

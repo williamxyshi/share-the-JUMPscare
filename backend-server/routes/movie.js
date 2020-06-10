@@ -19,11 +19,78 @@ const Movie = require("../models/movie_model");
 router.get("/frontpage", async (req, res) => {
   try {
 
-    A = ["get out", "silent hill", "shining", "paranormal activity" ]
+    /**
+     * finding the featured movies for the frontpage
+     */
+    var A = ["Get Out", "Silent Hill", "The Shining", "Paranormal Activity", "Parasite"]
+    FeaturedMovies = []
+
+    for(i = 0; i < A.length; i++){
+      var name = A[i]
+      console.log("searching movies:" + name);
 
 
+      let movie = await Movie.findOne({
+        name
+      });
 
-    res.json(A)
+      console.log("movie" + movie);
+
+      FeaturedMovies.push(movie)
+    }
+    
+    /**
+     * find most scares movies
+     * 
+     * TODO: Fix this to actually most scares (most posts)
+     */
+    var A = ["Get Out", "Silent Hill", "The Shining", "Paranormal Activity", "Parasite"]
+    MostScares = []
+
+    for(i = 0; i < A.length; i++){
+      var name = A[i]
+      console.log("searching movies:" + name);
+
+
+      let movie = await Movie.findOne({
+        name
+      });
+
+      console.log("movie" + movie);
+
+      MostScares.push(movie)
+    }
+
+       /**
+     * find most liked movies
+     * 
+     * TODO: Fix this to actually most liked (most likes)
+     */
+    var A = ["Get Out", "Silent Hill", "The Shining", "Paranormal Activity", "Parasite"]
+    MostLiked = []
+
+    for(i = 0; i < A.length; i++){
+      var name = A[i]
+      console.log("searching movies:" + name);
+
+
+      let movie = await Movie.findOne({
+        name
+      });
+
+      console.log("movie" + movie);
+
+      MostLiked.push(movie)
+    }
+
+    // res.json(FeaturedMovies)
+    // res.json(MostScares)
+
+    // res.json(MostLiked)
+
+    res.send({"FeaturedMovies": FeaturedMovies,
+              "MostScares": MostScares,
+              "MostLiked": MostLiked})
 
   } catch (e) {
     res.send({ message: "error in fetching frontpage" });
@@ -39,7 +106,7 @@ router.post("/getmovie", async (req, res) => {
   try {
 
     console.log("reached movie" + req);
-    const { name, length } = req.body;
+    const { name, length, posterurl } = req.body;
     console.log("reached movie" + name + length);
 
     let movie = await Movie.findOne({
@@ -57,7 +124,8 @@ router.post("/getmovie", async (req, res) => {
       movie = new Movie({
 
        name,
-       length
+       length,
+       posterurl
 
       });
 

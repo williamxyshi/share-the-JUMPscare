@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:orientation="horizontal"
-        android:background="@color/silverAccent"
+        android:background="@color/light_grey"
         app:layout_constraintTop_toBottomOf="@id/fragmentView"
         app:layout_constraintBottom_toTopOf="@id/navigationView"/>
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu"
-        app:itemBackground="@color/backgroundColorLight"
+        app:itemBackground="@color/eerieeblack"
         app:itemIconTint="@drawable/selector"
         android:elevation="10dp"
         app:itemTextColor="@color/silverAccent"

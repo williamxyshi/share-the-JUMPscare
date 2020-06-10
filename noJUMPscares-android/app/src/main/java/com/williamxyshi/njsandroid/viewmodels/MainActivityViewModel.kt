@@ -28,7 +28,15 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
      */
     var failedToLogIn: MutableLiveData<String> = MutableLiveData()
 
+    /**
+     * movies to display from search results
+     */
     var searchPageResults: MutableLiveData<MovieModel.SearchArrayResult> = MutableLiveData()
+
+    /**
+     * movies to display from featured movies
+     */
+    var frontPage: MutableLiveData<MovieDataClasses.FrontPage> = MutableLiveData()
 
 
     /**

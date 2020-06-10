@@ -48,15 +48,32 @@ object WebServerAccessObject {
             )
     }
 
-    fun getMovie(name: String, length: String, vm: MainActivityViewModel){
+    fun getMovie(name: String, length: String, posterurl: String, vm: MainActivityViewModel){
 
-        njsApiService.getMovie(MovieDataClasses.MovieInfo(name, length)).subscribeOn(Schedulers.io())
+        njsApiService.getMovie(MovieDataClasses.MovieInfo(name, length, posterurl)).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
 
                 Log.d(TAG, "result from node server: ${it}")
 
                 vm.currentMovieDetailWebServer.value = it
+            },
+                {error ->
+                    showResult(error.message?:"ERROR")
+
+                }
+
+            )
+    }
+
+    fun getFrontPage(vm: MainActivityViewModel){
+
+        njsApiService.getFrontPage().subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+                Log.d(TAG, "result from server; $it")
+                vm.frontPage.value = it
             },
                 {error ->
                     showResult(error.message?:"ERROR")

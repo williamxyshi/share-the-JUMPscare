@@ -5,6 +5,7 @@ import com.williamxyshi.njsandroid.models.retrofitmodels.MovieDataClasses
 import com.williamxyshi.njsandroid.models.retrofitmodels.TokenModel
 import com.williamxyshi.njsandroid.models.retrofitmodels.UserModel
 import io.reactivex.Observable
+import io.reactivex.internal.operators.observable.ObservableError
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -33,6 +34,9 @@ interface NJSApiService {
     fun getMovie(@Body movieinfo: MovieDataClasses.MovieInfo) :
             Observable<MovieDataClasses.ServerMovieResult>
 
+    @GET("/movie/frontpage")
+    fun getFrontPage():
+            Observable<MovieDataClasses.FrontPage>
 
 
 
