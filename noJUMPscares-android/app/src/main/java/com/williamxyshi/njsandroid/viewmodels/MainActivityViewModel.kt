@@ -50,6 +50,10 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
     var currentMovieDetailWebServer: MutableLiveData<MovieDataClasses.ServerMovieResult> = MutableLiveData()
 
 
+
+    var newPostClicked: MutableLiveData<Boolean> = MutableLiveData()
+
+
     var userPassword:String = ""
     var userEmail:String  = ""
 

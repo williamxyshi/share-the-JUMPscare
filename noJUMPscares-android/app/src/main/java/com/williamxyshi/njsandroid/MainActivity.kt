@@ -1,8 +1,15 @@
 package com.williamxyshi.njsandroid
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.PopupWindow
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.williamxyshi.njsandroid.fragments.*
@@ -149,7 +156,6 @@ class MainActivity : AppCompatActivity() {
                     }
                     true
                 }
-
                 R.id.bottom_navigation_search -> {
                     vm.currentPage.value = MainActivityViewModel.SEARCH_PAGE
 
@@ -157,20 +163,16 @@ class MainActivity : AppCompatActivity() {
                         replace(R.id.fragmentView, searchFragment).commit()
                         addToBackStack(null)
                     }
-
-
-
                     true
                 }
-
                 else -> {
-
                     false
                 }
             }
 
         }
     }
+
 
     companion object{
         const val TAG = "DashboardFragment"
