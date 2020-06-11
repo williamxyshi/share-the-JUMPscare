@@ -28,16 +28,150 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+            android:id="@+id/timeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="25dp"
-            android:textColor="@color/silverAccent"
+            android:textColor="@color/white_smoke"
             android:textSize="20dp"
             android:fontFamily="@font/mainfont"
+            android:textStyle="bold"
             android:text="Time:"/>
+
+
+            <EditText
+
+                android:maxLines="1"
+
+                android:inputType="number"
+
+                android:id="@+id/minutesPicker"
+
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintLeft_toRightOf="@id/timeTitle"
+
+                android:layout_width="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginLeft="15dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/silverAccent"
+                android:textColorHint="@color/silverAccent"
+                android:backgroundTint="@color/silverAccent"
+
+                android:textSize="16dp"
+                android:hint="minutes"
+                />
+
+
+        <TextView
+            app:layout_constraintLeft_toRightOf="@id/minutesPicker"
+            app:layout_constraintRight_toLeftOf="@id/secondsPicker"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/colon"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/silverAccent"
+            android:text=":"
+            android:textSize="20dp"
+            />
+
+        <EditText
+
+            android:maxLines="1"
+
+            android:inputType="number"
+
+            android:id="@+id/secondsPicker"
+
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintLeft_toRightOf="@id/minutesPicker"
+
+            android:layout_width="wrap_content"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/silverAccent"
+            android:textColorHint="@color/silverAccent"
+            android:backgroundTint="@color/silverAccent"
+
+            android:textSize="16dp"
+            android:hint="seconds"
+            />
+
+
+        <TextView
+
+            android:id="@+id/majorScareTitle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timeTitle"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Major Scare?"
+
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:textColor="@color/white_smoke"
+            android:textSize="20dp"
+            android:fontFamily="@font/mainfont"
+            android:textStyle="bold"
+            />
+
+        <CheckBox
+            app:layout_constraintTop_toBottomOf="@id/timeTitle"
+            android:layout_marginTop="27dp"
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/silverAccent"
+            app:layout_constraintLeft_toRightOf="@id/majorScareTitle"
+            android:layout_marginBottom="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <TextView
+
+            android:id="@+id/descriptionTitle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/majorScareTitle"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:textColor="@color/white_smoke"
+            android:textSize="20dp"
+            android:fontFamily="@font/mainfont"
+            android:textStyle="bold"
+            />
+
+
+        <EditText
+
+            android:maxLines="1"
+
+            android:inputType="number"
+
+            android:id="@+id/postDescription"
+
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintLeft_toRightOf="@id/minutesPicker"
+
+            android:layout_width="wrap_content"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/silverAccent"
+            android:textColorHint="@color/silverAccent"
+            android:backgroundTint="@color/silverAccent"
+
+            android:textSize="16dp"
+            android:hint="seconds"
+            />
 
 
 
