@@ -68,7 +68,7 @@ router.post(
             jwt.sign(
                 payload,
                 "randomString", {
-                    expiresIn: 10000
+                    expiresIn: 100000000000000000000
                 },
                 (err, token) => {
                     if (err) throw err;

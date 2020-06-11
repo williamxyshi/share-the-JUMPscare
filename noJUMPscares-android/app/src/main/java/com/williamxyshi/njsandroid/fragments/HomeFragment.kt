@@ -20,6 +20,7 @@ import android.R.string.no
 import android.R.attr.name
 import android.util.Log
 import com.williamxyshi.njsandroid.adapters.HomePageMovieAdapter
+import com.williamxyshi.njsandroid.utils.WebServerAccessObject
 
 
 class HomeFragment: Fragment() {
@@ -123,6 +124,7 @@ class HomeFragment: Fragment() {
 
     override fun onResume() {
         super.onResume()
+        WebServerAccessObject.getFrontPage(vm)
         vm.currentPage.value = MainActivityViewModel.HOME_PAGE
     }
 

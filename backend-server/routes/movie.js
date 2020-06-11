@@ -7,6 +7,7 @@ const router = express.Router();
 const auth = require("./../middleware/auth");
 
 const Movie = require("../models/movie_model");
+const User = require("../models/user_model")
 
 
     /**
@@ -34,7 +35,7 @@ router.get("/frontpage", async (req, res) => {
         name
       });
 
-      console.log("movie" + movie);
+      console.log("movie" + movie.name);
 
       FeaturedMovies.push(movie)
     }
@@ -56,7 +57,7 @@ router.get("/frontpage", async (req, res) => {
         name
       });
 
-      console.log("movie" + movie);
+      console.log("movie" + movie.name);
 
       MostScares.push(movie)
     }
@@ -78,7 +79,7 @@ router.get("/frontpage", async (req, res) => {
         name
       });
 
-      console.log("movie" + movie);
+      console.log("movie" + movie.name);
 
       MostLiked.push(movie)
     }
@@ -159,25 +160,39 @@ router.post("/addpost", auth, async (req, res) => {
     let movie = await Movie.findOne({
       name
     });
+    
+
     console.log("movie found as:" + movie);
 
     if(movie != null && user != null){
-      console.log("movie found");
-     
-      var post = {time: posttime, majorscare: majorscare, description: description};
-      console.log("movie found" + post.time);
-     
-      Movie.findOneAndUpdate({name: name}, {$push: {posts: post}},{new: true}, (err, result) => {
-        console.log(err, result);
-       })
-    
 
-      let movie = await Movie.findOne({
-        name
-      });
-      console.log("movie found as:" + movie);
-      res.json(movie);
+      var alreadyPosted = false
+      for(i=0; i<movie.posts.length; i++){
+        var currentPost = movie.posts[i]
+        if(currentPost.useremail == user.email && currentPost.time == posttime){
+          alreadyPosted = true;
+          break;
+        }
+      }
+      
+      if(alreadyPosted){
+        res.send({message: "already posted at this time"})
 
+      } else {
+
+            var post = {time: posttime, majorscare: majorscare, description: description, upvotes: 0, useremail: user.email};
+          
+            Movie.findOneAndUpdate({name: name}, {$push: {posts: post}},{new: true}, (err, result) => {
+              console.log(err, result);
+            })
+          
+
+            let movie = await Movie.findOne({
+              name
+            });
+            console.log("movie found as:" + movie);
+            res.json(movie);
+      }
 
 
     } else {
@@ -193,7 +208,7 @@ router.post("/addpost", auth, async (req, res) => {
 
 
   } catch (e) {
-    res.send({ message: "error in fetching movie" });
+    res.send({ message: "error in fetching movie" + e});
   }
 });
 

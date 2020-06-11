@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         /**
          * get front page movies
          */
-        WebServerAccessObject.getFrontPage(vm)
     }
 
 

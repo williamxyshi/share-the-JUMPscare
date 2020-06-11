@@ -31,11 +31,7 @@ class HomePageMovieAdapter (val context: Context, val vm: MainActivityViewModel,
             vm.frontPage.value?.MostScares?.get(position)
         }
 
-        val emoji =   if(mostLiked){
-            "\uD83D\uDC4D"
-        } else {
-            "\uD83D\uDC7B"
-        }
+        val emoji ="\uD83D\uDC7B"
 
         holder.scaresCount.text = emoji + ": " + movie?.posts?.size
 
