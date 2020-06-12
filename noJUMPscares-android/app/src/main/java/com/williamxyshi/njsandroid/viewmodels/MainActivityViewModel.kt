@@ -26,7 +26,7 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
     /**
      * error message, if an error message gets set here, we display a toast
      */
-    var failedToLogIn: MutableLiveData<String> = MutableLiveData()
+    var errorMessage: MutableLiveData<String> = MutableLiveData()
 
     /**
      * movies to display from search results

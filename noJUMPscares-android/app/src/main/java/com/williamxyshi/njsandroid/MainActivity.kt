@@ -16,6 +16,19 @@ import com.williamxyshi.njsandroid.fragments.*
 import com.williamxyshi.njsandroid.utils.WebServerAccessObject
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.Toast
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.R.id.edit
+import android.content.SharedPreferences
+
+
+
+
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +43,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var vm: MainActivityViewModel
 
-
+    /**
+     * prevents user fragment from being shown when app is initially launched, i know i can check which fragment is being displayed, or another cleaner solution
+     * but this works
+     */
+    private var showUserFragment = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +61,13 @@ class MainActivity : AppCompatActivity() {
         vm.currentPage.value = MainActivityViewModel.HOME_PAGE
 
         /**
-         * get front page movies
+         * get user token from shared preferences
          */
+
+        val sp1 = this.getSharedPreferences("Token", Context.MODE_PRIVATE)
+
+        val unm = sp1.getString("Unm", null)
+        vm.userToken.value = unm
     }
 
 
@@ -57,7 +79,19 @@ class MainActivity : AppCompatActivity() {
     private fun initialize(){
         vm = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
 
+        vm.errorMessage.observe(this, Observer {
+            Toast.makeText(
+                this, it,
+                Toast.LENGTH_LONG
+            ).show()
+        })
+
         vm.userToken.observe(this, androidx.lifecycle.Observer {
+
+            val sp = getSharedPreferences("Token", Context.MODE_PRIVATE)
+            val Ed = sp.edit()
+            Ed.putString("Unm", it)
+            Ed.apply()
 
             Log.d(LoginFragment.TAG, "calling get user call")
             WebServerAccessObject.getUserCall(vm)
@@ -66,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
         vm.user.observe(this, Observer {
 
-            if(it != null){
+            if(it != null && showUserFragment){
                 /**
                  * user logged in
                  */
@@ -74,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                     replace(R.id.fragmentView, loggedinFragment).commit()
                     addToBackStack(null)
                 }
-            } else {
+            } else if(showUserFragment) {
                 /**
                  *  user logged out
                  */
@@ -82,6 +116,8 @@ class MainActivity : AppCompatActivity() {
                     replace(R.id.fragmentView, loginFragment).commit()
                     addToBackStack(null)
                 }
+            } else {
+                showUserFragment = true
             }
 
 

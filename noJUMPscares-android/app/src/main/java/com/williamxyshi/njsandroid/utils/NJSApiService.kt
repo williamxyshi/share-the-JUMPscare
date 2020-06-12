@@ -38,6 +38,9 @@ interface NJSApiService {
     fun getFrontPage():
             Observable<MovieDataClasses.FrontPage>
 
+    @POST("/movie/addpost")
+    fun addPost(@Header("token") token: String, @Body postInfo: MovieDataClasses.PostInfo) :
+            Observable<MovieDataClasses.ServerMovieResult>
 
 
     companion object {

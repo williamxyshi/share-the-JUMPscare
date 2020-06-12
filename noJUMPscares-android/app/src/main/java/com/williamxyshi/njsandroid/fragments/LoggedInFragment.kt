@@ -1,5 +1,6 @@
 package com.williamxyshi.njsandroid.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +41,11 @@ class LoggedInFragment : Fragment() {
 
             vm.userToken.value = null
             vm.user.value = null
+
+            val sp = activity?.getSharedPreferences("Token", Context.MODE_PRIVATE)
+            val Ed = sp?.edit()
+            Ed?.putString("Unm", null)
+            Ed?.apply()
 
         }
 

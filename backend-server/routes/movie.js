@@ -180,7 +180,7 @@ router.post("/addpost", auth, async (req, res) => {
 
       } else {
 
-            var post = {time: posttime, majorscare: majorscare, description: description, upvotes: 0, useremail: user.email};
+            var post = {time: posttime, majorscare: majorscare, description: description, upvotedBy: [user.email], useremail: user.email};
           
             Movie.findOneAndUpdate({name: name}, {$push: {posts: post}},{new: true}, (err, result) => {
               console.log(err, result);

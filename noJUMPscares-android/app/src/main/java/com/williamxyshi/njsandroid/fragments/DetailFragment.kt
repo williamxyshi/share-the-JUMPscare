@@ -3,6 +3,7 @@ package com.williamxyshi.njsandroid.fragments
 import android.media.Image
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,10 +21,8 @@ import com.williamxyshi.njsandroid.adapters.HomePageMovieAdapter
 import com.williamxyshi.njsandroid.adapters.MoviePostAdapter
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import android.widget.LinearLayout
-
-
-
-
+import com.williamxyshi.njsandroid.models.retrofitmodels.MovieDataClasses
+import com.williamxyshi.njsandroid.utils.WebServerAccessObject
 
 
 class DetailFragment: Fragment() {
@@ -103,6 +102,27 @@ class DetailFragment: Fragment() {
         // which view you pass in doesn't matter, it is only used for the window tolken
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
 
+        val mins = popupView.findViewById<EditText>(R.id.minutesPicker)
+        val secs = popupView.findViewById<EditText>(R.id.secondsPicker)
+        val desc = popupView.findViewById<EditText>(R.id.postDescription)
+        val major = popupView.findViewById<CheckBox>(R.id.majorscareCheckbox)
+        val postButton = popupView.findViewById<Button>(R.id.postButton)
+
+
+
+        postButton.setOnClickListener {
+            val time: String = mins.text.toString() + ":" + secs.text.toString()
+            if(vm.userToken.value != null){
+                WebServerAccessObject.addPost(MovieDataClasses.PostInfo(vm.currentMovieDetailWebServer.value?.name?:return@setOnClickListener, time, major.isChecked.toString(), desc.text.toString()), vm)
+                popupWindow.dismiss()
+            } else {
+
+                vm.errorMessage.value = "please log in to post"
+            }
+            Log.d(TAG, "time: ${mins.text}:${secs.text }, desc: ${desc.text}, major: ${major.isChecked}")
+
+
+        }
     }
 
     companion object{

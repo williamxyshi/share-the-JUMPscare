@@ -26,7 +26,7 @@ object WebServerAccessObject {
                 { result -> showResult(result.token)
                     vm.userToken.value = result.token.toString()},
                 { error ->
-                    vm.failedToLogIn.value = error.message
+                    vm.errorMessage.value = error.message
                     showResult(error.message?:"ERROR") }
             )
     }
@@ -74,6 +74,23 @@ object WebServerAccessObject {
 
                 Log.d(TAG, "result from server; $it")
                 vm.frontPage.value = it
+            },
+                {error ->
+                    showResult(error.message?:"ERROR")
+
+                }
+
+            )
+    }
+
+    fun addPost(post: MovieDataClasses.PostInfo,vm: MainActivityViewModel){
+        njsApiService.addPost(vm.userToken.value?:return, post).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+                Log.d(TAG, "result from node server: ${it}")
+
+                vm.currentMovieDetailWebServer.value = it
             },
                 {error ->
                     showResult(error.message?:"ERROR")
