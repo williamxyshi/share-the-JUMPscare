@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.williamxyshi.njsandroid.R
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
+import okhttp3.internal.notify
 
 class LoggedInFragment : Fragment() {
 
@@ -32,6 +33,7 @@ class LoggedInFragment : Fragment() {
 
         initialize()
 
+        welcomeUser.text = "Welcome Back " + vm.user.value?.username
 
         return rootView
     }
@@ -54,6 +56,7 @@ class LoggedInFragment : Fragment() {
     private fun setUpVM(){
 
         vm = ViewModelProviders.of(activity?:return).get(MainActivityViewModel::class.java)
+
     }
 
 }
