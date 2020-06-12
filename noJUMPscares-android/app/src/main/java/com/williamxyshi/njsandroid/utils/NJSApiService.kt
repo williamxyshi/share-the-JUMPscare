@@ -43,6 +43,11 @@ interface NJSApiService {
             Observable<MovieDataClasses.ServerMovieResult>
 
 
+    @POST("/movie/votepost")
+    fun votePost(@Header("token") token: String, @Body postInfo: MovieDataClasses.VoteInfo) :
+            Observable<MovieDataClasses.ServerMovieResult>
+
+
     companion object {
 
         const val TAG = "NJSApiService"

@@ -100,6 +100,23 @@ object WebServerAccessObject {
             )
     }
 
+    fun votePost(vote: MovieDataClasses.VoteInfo,vm: MainActivityViewModel){
+        njsApiService.votePost(vm.userToken.value?:return, vote).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+                Log.d(TAG, "result from node server: ${it}")
+
+                vm.currentMovieDetailWebServer.value = it
+            },
+                {error ->
+                    showResult(error.message?:"ERROR")
+
+                }
+
+            )
+    }
+
     private fun showResult(string: String){
         Log.d(TAG, "result from server: ${string} ")
 

@@ -9,6 +9,8 @@ object MovieDataClasses {
 
     data class PostInfo(val name: String, val posttime: String, val majorscare: String, val description: String )
 
+    data class VoteInfo(val name: String, val posttime: String, val description: String, val action: String )
+
     data class ServerMovieResult(val name: String, val length: String, val posts: ArrayList<MoviePost>, val posterurl: String, val pageviews: Int )
 
     data class MoviePost(val time: String, val majorscare: String, val description: String,  val upvotedBy: ArrayList<String>,  val downvotedBy: ArrayList<String>)

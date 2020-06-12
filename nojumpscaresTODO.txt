@@ -1,0 +1,26 @@
+things left to implement:
+
+
+
+
+add upvote/downvote option (1 hour)
+
+delete post (30 min)
+
+sign up (30 min)
+
+sort posts by time (1 hour)
+
+add SECURITY (1.5 hour)
+
+add potential jumpscare warning (20 min)
+
+write script (2+ hours)
+
+fix ui  (30 hour)
+
+fix front page (30 min)
+
+
+
+upload to heroku
