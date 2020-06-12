@@ -10,11 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da480fda-f728-4ba7-8d7d-fde4ba75bdc0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/williamxyshi/njsandroid/models/retrofitmodels/MovieDataClasses.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/williamxyshi/njsandroid/models/retrofitmodels/MovieDataClasses.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/williamxyshi/njsandroid/utils/NJSApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/williamxyshi/njsandroid/utils/NJSApiService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/williamxyshi/njsandroid/utils/WebServerAccessObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/williamxyshi/njsandroid/utils/WebServerAccessObject.kt" afterDir="false" />
-    </list>
+    <list default="true" id="da480fda-f728-4ba7-8d7d-fde4ba75bdc0" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/williamxyshi/njsandroid/utils/WebServerAccessObject.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="105" column="24" lean-forward="true" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
+            <state relative-caret-position="374">
+              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
             </state>
           </provider>
         </entry>
@@ -229,9 +225,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="21" />
-    <option name="y" value="-22" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="71" />
+    <option name="y" value="102" />
     <option name="width" value="1893" />
     <option name="height" value="923" />
   </component>
@@ -390,11 +386,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="57" y="82" width="1514" height="738" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.13355705" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.13686383" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -801,8 +797,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/williamxyshi/njsandroid/utils/WebServerAccessObject.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="105" column="24" lean-forward="true" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
+        <state relative-caret-position="374">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
         </state>
       </provider>
     </entry>

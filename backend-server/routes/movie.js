@@ -221,7 +221,75 @@ router.post("/addpost", auth, async (req, res) => {
 });
 
 
+router.post("/deletepost", auth, async (req, res) => {
+  try {
 
+   
+    const { name, posttime, posteremail } = req.body;
+    const user = await User.findById(req.user.id);
+
+    let movie = await Movie.findOne({
+      name
+    });
+    
+
+    console.log("movie found as:" + movie);
+
+    if(movie != null && user != null){
+
+      
+
+      function checkPost(value){
+        return value.useremail != posteremail || value.time != posttime
+      }
+
+      movie.posts = movie.posts.filter(checkPost)
+      movie.save()
+      res.json(movie)
+  
+
+      // var index = -1
+
+      // for( i = 0; i < movie.posts.length; i++){
+      //   var currentPost = movie.posts[i];
+
+      //   console.log("currentpost" + currentPost.time + currentPost.useremail);
+
+      //   if(currentPost.time == posttime && currentPost.useremail == posteremail){
+      //     index = i
+      //     break;
+      //   }  
+      // }
+
+
+      /**
+       * post found
+       */
+      // if(index != -1){
+      
+      // } else {
+      //   console.log("post not found");
+
+      //   res.send({ message: "error in fetching post" });
+      // }
+
+
+
+    } else {
+      console.log("movie not found");
+
+      res.send({ message: "error in fetching movie" });
+      
+    }
+
+
+
+
+
+  } catch (e) {
+    res.send({ message: "error in fetching movie" + e});
+  }
+});
 
 
 
