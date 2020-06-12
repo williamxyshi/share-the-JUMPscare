@@ -5,7 +5,8 @@ const Movie = mongoose.Schema({
   name: String,
   length: String,
   posterurl: String,
-  posts : [{time: String, majorscare: String, description: String, upvotedBy: [], useremail: String}]
+  pageviews: Number,
+  posts : [{time: String, majorscare: String, description: String, upvotedBy: [], downvotedBy: [], useremail: String}]
    
 });
 

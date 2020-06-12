@@ -32,6 +32,8 @@ class DetailFragment: Fragment() {
     private lateinit var posterImage: ImageView
     private lateinit var movieDescription: TextView
     private lateinit var jumpScaresCount: TextView
+    private lateinit var genre: TextView
+    private lateinit var views: TextView
 
     private lateinit var postRecyclerView: RecyclerView
     private lateinit var postAdapter: MoviePostAdapter
@@ -48,6 +50,9 @@ class DetailFragment: Fragment() {
         posterImage = rootView.findViewById(R.id.moviePoster)
         movieDescription = rootView.findViewById(R.id.movieDescription)
         jumpScaresCount = rootView.findViewById(R.id.jumpScaresCounter)
+        views = rootView.findViewById(R.id.viewsCount)
+
+        genre = rootView.findViewById(R.id.movieGenre)
 
         newPost = rootView.findViewById(R.id.newButton)
 
@@ -64,6 +69,8 @@ class DetailFragment: Fragment() {
         postRecyclerView.adapter = postAdapter
 
 
+        genre.text = "genre: " + vm.currentMovieDetail.value?.Genre
+
         newPost.setOnClickListener {
             onButtonShowPopupWindowClick(rootView)
         }
@@ -78,7 +85,9 @@ class DetailFragment: Fragment() {
         vm.currentMovieDetailWebServer.observe(this, Observer{
 
             postRecyclerView.adapter?.notifyDataSetChanged()
-            jumpScaresCount.text = "Jump Scares Count: " + it.posts.size.toString()
+            jumpScaresCount.text = "Recorded Jump Scares: " + it.posts.size.toString()
+            views.text = ": " + vm.currentMovieDetailWebServer.value?.pageviews
+
         })
 
 
