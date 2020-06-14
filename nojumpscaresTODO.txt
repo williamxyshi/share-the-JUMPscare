@@ -3,9 +3,9 @@ things left to implement:
 
 
 
-add upvote/downvote option (1 hour)
+add upvote/downvote option -> frontend (30 min)
 
-delete post (30 min)
+delete post -> frontend (30 min)
 
 sign up (30 min)
 
