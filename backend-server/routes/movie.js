@@ -248,7 +248,7 @@ router.post("/deletepost", auth, async (req, res) => {
       res.json(movie)
   
 
-      // var index = -1
+      // var index dd= -1
 
       // for( i = 0; i < movie.posts.length; i++){
       //   var currentPost = movie.posts[i];

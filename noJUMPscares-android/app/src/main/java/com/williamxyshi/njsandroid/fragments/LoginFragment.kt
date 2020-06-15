@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -29,6 +30,20 @@ class LoginFragment : Fragment() {
     private lateinit var passwordText: TextView
 
 
+    private lateinit var passwordConfirmText: TextView
+    private lateinit var usernameText: TextView
+
+    /**
+     *
+     * SHOW AND HIDE these containers based on wether or not we're logging in or signing up
+     */
+    private lateinit var usernameContainer: ConstraintLayout
+    private lateinit var confirmPasswordContainer: ConstraintLayout
+
+
+    private var mode = SIGN_IN
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,6 +54,12 @@ class LoginFragment : Fragment() {
         loginButton = rootView.findViewById(R.id.loginButton)
         emailText = rootView.findViewById(R.id.emailField)
         passwordText = rootView.findViewById(R.id.passwordField)
+
+
+        passwordConfirmText = rootView.findViewById(R.id.passwordConfirmField)
+        usernameText = rootView.findViewById(R.id.usernameField)
+        usernameContainer = rootView.findViewById(R.id.usernameContainer)
+        confirmPasswordContainer = rootView.findViewById(R.id.passwordConfirmContainer)
 
         initialize()
         setUpListeners()
@@ -76,5 +97,8 @@ class LoginFragment : Fragment() {
 
     companion object{
         const val TAG = "LoginFragment"
+
+        private const val SIGN_IN = 0
+        private const val SIGN_UP = 1
     }
 }

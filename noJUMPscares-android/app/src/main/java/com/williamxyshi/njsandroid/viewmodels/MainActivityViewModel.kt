@@ -57,6 +57,8 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
     var userPassword:String = ""
     var userEmail:String  = ""
 
+    var deleteInfo: MovieDataClasses.DeleteInfo? = null
+
     fun setEmailPassword(email: String, password: String){
         userEmail = email
         userPassword = password

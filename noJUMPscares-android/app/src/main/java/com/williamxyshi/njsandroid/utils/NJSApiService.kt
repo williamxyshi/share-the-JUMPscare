@@ -26,6 +26,10 @@ interface NJSApiService {
     fun login(@Body loginInfo: LoginInfo):
             Observable<TokenModel.Result>
 
+    @POST("/user/signup")
+    fun signup(@Body signUpInfo: UserModel.SignUpInfo):
+            Observable<TokenModel.Result>
+
     @GET("/user/me")
     fun getUser(@Header("token") token: String):
             Observable<UserModel.Result>
@@ -47,6 +51,9 @@ interface NJSApiService {
     fun votePost(@Header("token") token: String, @Body postInfo: MovieDataClasses.VoteInfo) :
             Observable<MovieDataClasses.ServerMovieResult>
 
+    @POST("/movie/deletepost")
+    fun deletePost(@Header("token") token: String, @Body postInfo: MovieDataClasses.DeleteInfo) :
+            Observable<MovieDataClasses.ServerMovieResult>
 
     companion object {
 

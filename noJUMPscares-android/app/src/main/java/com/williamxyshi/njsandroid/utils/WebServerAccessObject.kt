@@ -4,6 +4,7 @@ import android.util.Log
 import com.williamxyshi.njsandroid.models.User
 import com.williamxyshi.njsandroid.models.retrofitmodels.LoginInfo
 import com.williamxyshi.njsandroid.models.retrofitmodels.MovieDataClasses
+import com.williamxyshi.njsandroid.models.retrofitmodels.UserModel
 import com.williamxyshi.njsandroid.viewmodels.MainActivityViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -21,6 +22,19 @@ object WebServerAccessObject {
         )
 
         njsApiService.login( info ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { result -> showResult(result.token)
+                    vm.userToken.value = result.token.toString()},
+                { error ->
+                    vm.errorMessage.value = error.message
+                    showResult(error.message?:"ERROR") }
+            )
+    }
+
+    fun signupCall(   signUpInfo: UserModel.SignUpInfo ,vm: MainActivityViewModel){
+
+        njsApiService.signup( signUpInfo ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result -> showResult(result.token)
@@ -117,6 +131,22 @@ object WebServerAccessObject {
             )
     }
 
+    fun deletePost(deleteInfo: MovieDataClasses.DeleteInfo, vm: MainActivityViewModel){
+        njsApiService.deletePost(vm.userToken.value?:return, deleteInfo).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+                Log.d(TAG, "result from node server: ${it}")
+
+                vm.currentMovieDetailWebServer.value = it
+            },
+                {error ->
+                    showResult(error.message?:"ERROR")
+
+                }
+
+            )
+    }
     private fun showResult(string: String){
         Log.d(TAG, "result from server: ${string} ")
 
