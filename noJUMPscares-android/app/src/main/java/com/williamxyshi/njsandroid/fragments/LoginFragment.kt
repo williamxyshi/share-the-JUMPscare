@@ -41,6 +41,9 @@ class LoginFragment : Fragment() {
     private lateinit var confirmPasswordContainer: ConstraintLayout
 
 
+    /**
+     * determines if the user is signing in or signing up
+     */
     private var mode = SIGN_IN
 
 
