@@ -6,3 +6,7 @@ backend built with nodejs, express and mongodb/mongoose </br>
 mobile client built with kotlin (Android) </br>
 
 movie length and movie posters pulled from OMDb API </br>
+
+### TO DO:
+fix some server bugs </br>
+deploy server and app
