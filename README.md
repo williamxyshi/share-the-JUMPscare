@@ -2,9 +2,9 @@
 hate jumpscares? checkout and share jumpscares in movies with sharetheJUMPscare </br>
 
 ### Features:
--user authentication
--post jumpscare times with description to any movie
--like or dislike other posts
+  - user authentication
+  - post jumpscare times with description to any movie
+  - like or dislike other posts
 
 ### Built With:
 backend built with nodejs, express and mongodb/mongoose </br>
