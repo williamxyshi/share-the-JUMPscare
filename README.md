@@ -16,4 +16,5 @@ movie length and movie posters pulled from OMDb API </br>
 
 ### TO DO:
 fix some server bugs </br>
-deploy server and app
+deploy server and app</br>
+web client?
